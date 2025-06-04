@@ -35,6 +35,8 @@ Menu de pesquisa que poderá levar você ate o conteúdo desejado
 Glóssario de Termos com suas definições, função de adicionar termo, alterar e deletar, todas com ultilização de senha de moderador para segurança da página. Todos os Termos sendo armazenados em um banco de dados ultilizando .CSV.
 Aba de Login e cadastro, para envio de sugestões e se o usuário quizer entrar para comunidade , poderá solicitar titulo de moderador da página e assim recebera credenciais de GM, para ter senha personalizada e então poderá fazer alterações no glossário e adicionar conteúdos, ultilizamos Users e Suggestions em banco de dados com o .CSV.
 
+Breve apresentação da interface do nosso projeto : https://www.youtube.com/watch?v=P_5XYivQG1Q
+
 B. Tecnologias usadas Foram: Python, Flask, Html ( CSS, Javascript).
 Flask foi usado para definir as rotas do site ( URLs) e as funções do Python
 que serão executadas quando as rotas forem acessadas via HTML para formar os códigos
