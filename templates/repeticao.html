@@ -1,0 +1,71 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+    <title>Estruturas de Repetição</title>
+    <style>
+
+        section {
+            max-width: 700px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem 2rem;
+            margin: auto;
+        }
+        h2 {
+            color: #2c3e50;
+            border-left: 6px solid #4B8BBE;
+            padding-left: 0.75rem;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        p strong {
+            color: #34495e;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+        pre code .keyword {
+            color: #66d9ef;
+            font-weight: bold;
+        }
+        pre code .function {
+            color: #a6e22e;
+        }
+        pre code .string {
+            color: #e6db74;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h2>Estruturas de repetição</h2><br>
+    <p><strong>Conceito</strong><br> Uma estrutura de repetição, também conhecida como laço de repetição ou loop, é um recurso fundamental na programação que permite executar um bloco de código repetidamente enquanto uma determinada condição for verdadeira ou até que uma condição específica seja atingida. Isso evita a necessidade de escrever o mesmo código várias vezes, tornando os programas mais concisos, eficientes e fáceis de manter.<br></p>
+        As estruturas de repetição são cruciais para automatizar tarefas repetitivas, processar grandes conjuntos de dados e implementar algoritmos que requerem iteração.<br><br><br>
+    <p><strong>Aplicação</strong><br> As estruturas de repetição são amplamente utilizadas em diversas situações na programação, incluindo:<br></p>
+    <li><strong>Processamento de listas e arrays:</strong> Iterar sobre os elementos de uma coleção para realizar alguma operação em cada um deles (por exemplo, calcular a soma dos elementos de uma lista).</li><br>
+    <li><strong>Leitura de arquivos:</strong> Ler linha por linha de um arquivo até o final.</li><br>
+    <li><strong>Validação de entrada de dados:</strong> Solicitar a entrada do usuário repetidamente até que um valor válido seja fornecido.</li><br>
+    <li><strong>Implementação de algoritmos iterativos:</strong> Executar um conjunto de passos repetidamente até que uma solução seja encontrada (por exemplo, algoritmos de busca ou ordenação).</li><br>
+    <li><strong>Criação de jogos e animações:</strong> Atualizar o estado do jogo ou os quadros da animação repetidamente.</li><br>
+    <li><strong>Geração de sequências e padrões:</strong> Criar sequências numéricas, textuais ou visuais através da repetição de um conjunto de operações.<br><br></p>
+    <p>Tipos Comuns de Estruturas de Repetição<br> As estruturas de repetição mais comuns encontradas em linguagens de programação são:<br></p>
+    <li><strong>for (Para):</strong> Executa um bloco de código um número específico de vezes, geralmente iterando sobre uma sequência (como uma lista, string ou intervalo de números).</li><br>
+    <li><strong>while (Enquanto):</strong> Executa um bloco de código enquanto uma determinada condição for verdadeira. A condição é verificada no início de cada iteração.</li><br>
+    <li><strong>do-while (Faça-Enquanto):</strong> Similar ao while, mas a condição é verificada após a execução do bloco de código. Isso garante que o bloco seja executado pelo menos uma vez. (Nem todas as linguagens implementam explicitamente o do-while, mas a mesma lógica pode ser alcançada com outras construções).</li><br><br>
+    <p><strong>Exemplo:</strong></p>
+    <pre><code><span class="keyword">for</span> i <span class="keyword">in</span> range(5):
+    <span class="function">print</span>(<span class="string">"Contagem:"</span>, i)</code></pre>
+</section>
+
+{% endblock %}

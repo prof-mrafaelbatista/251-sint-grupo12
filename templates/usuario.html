@@ -1,0 +1,230 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+  <title>Painel do Usuário</title>
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      padding: 30px;
+      gap: 30px;
+    }
+    .sidebar {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+      border-right: 1px solid #e6e6e6;
+    }
+    .sidebar img {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+    }
+    .sidebar h2 {
+      margin-top: 15px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #4B8BBE;
+    }
+    .user-info {
+      margin-top: 15px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+      white-space: pre-wrap;
+    }
+    textarea.user-info-input {
+      width: 100%;
+      min-height: 90px;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1rem;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      color: #333;
+    }
+    .edit-buttons {
+      margin-top: 15px;
+    }
+    button.edit-button,
+    button.save-button,
+    button.cancel-button {
+      background-color: #4B8BBE;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 0 8px 12px 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    button.edit-button:hover,
+    button.save-button:hover,
+    button.cancel-button:hover {
+      background-color: #FFD43B;
+      color: black;
+    }
+    .hidden {
+      display: none;
+    }
+    .suggestion-form {
+      flex: 2;
+      padding: 20px;
+    }
+    .suggestion-form h2 {
+      margin-bottom: 20px;
+      color: #4B8BBE;
+      font-weight: 700;
+      font-size: 1.6rem;
+      border-bottom: 3px solid #4B8BBE;
+      padding-bottom: 8px;
+    }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin: 0.5rem 0 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      background-color: white; /* Cor de fundo alterada para branca */
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      border-color: #4B8BBE;
+      outline: none;
+    }
+    button[type="submit"] {
+      background-color: #4B8BBE;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #FFD43B;
+      color: black;
+    }
+    #message {
+      margin-top: 12px;
+      font-size: 1rem;
+      min-height: 24px;
+      font-weight: 600;
+      color: red;
+      transition: color 0.3s ease;
+    }
+    #message.success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <img src="{{ url_for('static', filename='anderson.jpg') }}" alt="Foto do Usuário" />
+      <h2>{{ username }}</h2>
+
+      <form id="userInfoForm" method="POST" action="/update_user_info">
+        <input type="hidden" name="username" value="{{ username }}">
+        <div id="userInfoText" class="user-info">{{ additional_info or "Criador de conteúdo. (Lá ele)" }}</div>
+        <textarea id="userInfoInput" name="additional_info" class="user-info-input hidden">{{ additional_info or "" }}</textarea>
+
+        <div class="edit-buttons">
+          <button type="button" id="editBtn" class="edit-button">Editar</button>
+          <button type="submit" id="saveBtn" class="save-button hidden">Salvar</button>
+          <button type="button" id="cancelBtn" class="cancel-button hidden">Cancelar</button>
+        </div>
+      </form>
+    </div>
+    <div class="suggestion-form">
+      <h2>Enviar Sugestão</h2>
+      <form id="suggestionForm" method="POST" action="/submit_suggestion">
+        <input type="hidden" name="username" value="{{ username }}">
+        <input type="text" name="suggestion_type" placeholder="Tipo de Sugestão" required />
+        <textarea name="suggestion" placeholder="Digite sua sugestão aqui..." rows="5" required></textarea>
+        <button type="submit">Enviar Sugestão</button>
+      </form>
+      <div id="message"></div>
+    </div>
+  </div>
+
+  <script>
+    const editBtn = document.getElementById('editBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const userInfoText = document.getElementById('userInfoText');
+    const userInfoInput = document.getElementById('userInfoInput');
+
+    editBtn.addEventListener('click', () => {
+      userInfoText.classList.add('hidden');
+      userInfoInput.classList.remove('hidden');
+      editBtn.classList.add('hidden');
+      saveBtn.classList.remove('hidden');
+      cancelBtn.classList.remove('hidden');
+      userInfoInput.focus();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      userInfoInput.value = userInfoText.textContent.trim();
+      userInfoInput.classList.add('hidden');
+      userInfoText.classList.remove('hidden');
+      editBtn.classList.remove('hidden');
+      saveBtn.classList.add('hidden');
+      cancelBtn.classList.add('hidden');
+    });
+
+    const suggestionForm = document.getElementById('suggestionForm');
+    const messageDiv = document.getElementById('message');
+
+    suggestionForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(suggestionForm);
+
+      fetch(suggestionForm.action, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Erro ao enviar a sugestão. Tente novamente.');
+        }
+      })
+      .then(data => {
+        messageDiv.textContent = data.message || 'Sugestão enviada com sucesso!';
+        messageDiv.classList.remove('hidden', 'error');
+        messageDiv.classList.add('success');
+        suggestionForm.reset();
+      })
+      .catch(error => {
+        messageDiv.textContent = error.message;
+        messageDiv.classList.remove('hidden', 'success');
+        messageDiv.classList.add('error');
+      });
+    });
+  </script>
+{% endblock %}
+

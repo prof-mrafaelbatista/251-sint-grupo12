@@ -1,0 +1,111 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<title>Estruturas de Seleção</title>
+<style>
+    section {
+        max-width: 700px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 2rem;
+        margin: auto;
+    }
+
+    h2 {
+        color: #2c3e50;
+        border-left: 6px solid #4B8BBE;
+        padding-left: 0.75rem;
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    p strong {
+        color: #34495e;
+    }
+
+    .mark,
+    mark {
+        padding: .1875em;
+        color: black;
+        background-color: #FFD43B;
+    }
+
+    pre {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 1rem 1.25rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    }
+
+    pre code .keyword {
+        color: #66d9ef;
+        font-weight: bold;
+    }
+
+    pre code .function {
+        color: #a6e22e;
+    }
+
+    pre code .string {
+        color: #e6db74;
+    }
+
+    pre code .white {
+        color: #ffffff;
+    }
+</style>
+</head>
+
+<body>
+    <section>
+        <h2>Estruturas de seleção</h2><br>
+        <p><strong>Conceito</strong><br> Uma estrutura de seleção, também conhecida como estrutura condicional ou desvio
+            condicional, é um elemento fundamental na lógica de programação que permite que um programa execute
+            diferentes blocos de código dependendo do resultado de uma condição (expressão lógica ou relacional). Em
+            outras palavras, ela possibilita que o fluxo de execução do programa siga caminhos distintos com base em se
+            uma determinada condição é verdadeira ou falsa.<br>As estruturas de seleção são essenciais para criar
+            programas com comportamento dinâmico e adaptável a diferentes situações e entradas de dados.<br><br></p>
+        <p><strong>Aplicação</strong><br> As estruturas de seleção são amplamente utilizadas em diversas situações na
+            programação, incluindo:<br>
+            <li><strong>Tomada de decisões:</strong> Quando um programa precisa escolher entre diferentes ações a serem
+                executadas. Por
+                exemplo, verificar se um usuário tem permissão para acessar uma determinada funcionalidade.<br>
+        </p>
+        <li><strong>Tratamento de erros:</strong> Identificar condições de erro e executar um código específico para
+            lidar com elas,
+            evitando que o programa falhe inesperadamente.<br></p>
+        <li><strong>Implementação de lógica complexa:</strong> Combinar múltiplas condições para criar um fluxo de
+            execução sofisticado
+            que responda a diferentes cenários.<br></p>
+        <li><strong>Criação de interfaces de usuário interativas:</strong> Determinar quais elementos exibir ou quais
+            ações realizar com
+            base na interação do usuário (por exemplo, um clique em um botão).<br><br></p>
+            <p><strong>Tipos Comuns de Estruturas de Seleção</strong><br> As estruturas de seleção mais comuns
+                encontradas em linguagens de programação são:<br><br>
+        <li><mark>if</mark> (Se): Executa um bloco de código somente se a condição especificada for verdadeira.</li><br>
+        <li><mark>if-else</mark> (Se-Senão): Executa um bloco de código se a condição for verdadeira e outro bloco de
+            código diferente se a condição for falsa.</li><br>
+        <li><mark>if-elif-else</mark> (Se-Senão Se-Senão) ou <mark>if-elseif-else</mark>: Permite verificar múltiplas
+            condições em sequência. O bloco de código correspondente à primeira condição verdadeira é executado. Se
+            nenhuma condição for verdadeira, o bloco do else (se houver) é executado.</li><br>
+        <li><mark>switch-case</mark> (Escolha-Caso): Permite selecionar um entre vários blocos de código para execução,
+            com base no valor de uma variável ou expressão. É útil quando há múltiplas opções discretas a serem
+            consideradas.</li><br><br>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>numero = int(input("Digite um número inteiro: "))<br>
+<span class="keyword">if</span> numero % 2 == 0:
+    <span class="function">print</span>(<span class="string">"f"O número <span class="white">{numero}</span> é par."</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"f"O número <span class="white">{numero}</span> é ímpar."</span>)</code></pre>
+    </section>
+
+    {% endblock %}

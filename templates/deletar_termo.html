@@ -1,0 +1,14 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+    <h2>Glossário de Termos</h2>
+    <ul>
+        {% for termo, definicao in glossario %}
+            <li>
+                <strong>{{ termo }}</strong>: {{ definicao }}
+                <a href="{{ url_for('deletar_termo', termo_para_deletar=termo) }}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('novo_termo') }}">Adicionar Novo Termo</a></p>
+    <p><a href="{{ url_for('duvidas') }}">Tirar Dúvidas</a></p>
+{% endblock %}

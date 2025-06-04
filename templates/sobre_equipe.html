@@ -1,0 +1,215 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<style>
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Espaçamento entre os cards */
+    margin-top: 20px; /* Espaço entre o menu de navegação e os cards */
+  }
+
+  .person-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .person-photo {
+    width: 100%;
+    height: 400px; /* Definindo uma altura fixa para todas as imagens */
+    object-fit: cover; /* Faz com que a imagem cubra o espaço sem distorcer */
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  .person-name {
+    font-weight: 700;
+    font-size: 1.45rem;
+    padding: 20px 24px 16px;
+    color: #222;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+
+  .person-info {
+    padding: 10px 24px;
+    text-align: center;
+    color: #555;
+  }
+
+  .social-sections {
+    display: flex;
+    height: 140px;
+  }
+
+  .social-section {
+    flex: 1;
+    padding: 16px 10px;
+    border-left: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .social-section:first-child {
+    border-left: none;
+  }
+
+  .social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    max-width: 90%;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    outline-offset: 2px;
+  }
+
+  .social-link:hover,
+  .social-link:focus {
+    color: #023e8a;
+    text-decoration: underline;
+    outline: none;
+  }
+
+  .social-logo {
+    width: 40px;
+    height: 40px;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  @media (max-width: 700px) {
+    .person-card {
+      width: 90vw;
+    }
+  }
+</style>
+</head>
+<body>
+<br>
+<div class="card-container">
+
+  <div class="person-card" aria-label="Redes sociais de Anderson">
+    <img class="person-photo" src="../static/AndersonMelo.jpg" alt="Foto de Anderson" />
+    <div class="person-name">Anderson Melo</div>
+    <div class="person-info">Um entusiasta de tecnologia de 29 anos, casado e com formação técnica em Eletroeletrônica. Minha paixão por hardware de computador se une ao crescente interesse por desenvolvimento web, atualmente cursando Sistemas para Internet (P1) na UNIESP. A fé cristã guia meus valores e a programação alimenta minha curiosidade e desejo de criar soluções inovadoras.</div>
+    <div class="social-sections">
+      <section class="social-section" aria-label="GitHub de Anderson">
+        <a href="https://github.com/andersonmelo18" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo GitHub" />
+          GitHub
+        </a>
+      </section>
+      <section class="social-section" aria-label="LinkedIn de Anderson">
+        <a href="https://www.linkedin.com/in/anderson-melo-7a1480368/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Logo LinkedIn" />
+          LinkedIn
+        </a>
+      </section>
+      <section class="social-section" aria-label="Instagram de Anderson">
+        <a href="https://instagram.com/_andersonmelo18" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Logo Instagram" />
+          Instagram
+        </a>
+      </section>
+    </div>
+  </div>
+
+  <div class="person-card" aria-label="Redes sociais de Joalis">
+    <img class="person-photo" src="../static/JoalisBatista.jpg" alt="Foto de Joalis" />
+    <div class="person-name">Joalis Batista</div>
+    <div class="person-info">28 anos, Amante da Tecnologia da Informação com forte interesse em hardware e software. Atualmente, Cursando Sistemas para Internet na UNIESP, onde aprofunda seus conhecimentos e habilidades técnicas. Comprometido com o aprendizado contínuo e o desenvolvimento profissional, busca constantemente oportunidades para atuar e evoluir na área de TI.</div>
+    <div class="social-sections">
+      <section class="social-section" aria-label="GitHub de Joalis">
+        <a href="https://github.com/JBS2897" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo GitHub" />
+          GitHub
+        </a>
+      </section>
+      <section class="social-section" aria-label="LinkedIn de Joalis">
+        <a href="https://www.linkedin.com/in/joalis-batista-89210411b/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Logo LinkedIn" />
+          LinkedIn
+        </a>
+      </section>
+      <section class="social-section" aria-label="Instagram de Joalis">
+        <a href="https://www.instagram.com/accounts/login/?next=%2Fjoalis_batista97%2F&source=omni_redirect" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Logo Instagram" />
+          Instagram
+        </a>
+      </section>
+    </div>
+  </div>
+
+  <div class="person-card" aria-label="Redes sociais de Pedro">
+    <img class="person-photo" src="../static/PedroHenrique.jpg" alt="Foto de Pedro" />
+    <div class="person-name">Pedro Henrique</div>
+    <div class="person-info">24 anos, curioso e dedicado à Tecnologia da Informação, com interesse em soluções de software e sistemas. Atualmente, estudante de Sistemas para Internet na UNIESP, onde se empenha em expandir seus conhecimentos técnicos. Está sempre em busca de novas experiências que o ajudem a evoluir na carreira de TI.</div>
+    <div class="social-sections">
+      <section class="social-section" aria-label="GitHub de Pedro">
+        <a href="https://github.com/pedro" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo GitHub" />
+          GitHub
+        </a>
+      </section>
+      <section class="social-section" aria-label="LinkedIn de Pedro">
+        <a href="https://linkedin.com/in/pedro" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Logo LinkedIn" />
+          LinkedIn
+        </a>
+      </section>
+      <section class="social-section" aria-label="Instagram de Pedro">
+        <a href="https://instagram.com/pedro" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Logo Instagram" />
+          Instagram
+        </a>
+      </section>
+    </div>
+  </div>
+
+  <div class="person-card" aria-label="Redes sociais de Matheus">
+    <img class="person-photo" src="../static/MatheusCamargo.jpg" alt="Foto de Matheus" />
+    <div class="person-name">Matheus Camargo</div>
+    <div class="person-info">Sou estudante do curso de Sistemas para Internet na UNIESP. Tenho grande interesse por tecnologia e estou em constante busca por conhecimentos e experiências na área de desenvolvimento e soluções web.</div>
+    <div class="social-sections">
+      <section class="social-section" aria-label="GitHub de Matheus">
+        <a href="https://github.com/matheus" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Logo GitHub" />
+          GitHub
+        </a>
+      </section>
+      <section class="social-section" aria-label="LinkedIn de Matheus">
+        <a href="https://www.linkedin.com/in/matheus-oliveira-69bb80350?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Logo LinkedIn" />
+          LinkedIn
+        </a>
+      </section>
+      <section class="social-section" aria-label="Instagram de Matheus">
+        <a href="https://instagram.com/matheus" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img class="social-logo" src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Logo Instagram" />
+          Instagram
+        </a>
+      </section>
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+
+{% endblock %}

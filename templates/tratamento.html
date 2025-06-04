@@ -1,0 +1,71 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<title>Tratamento de Exceção</title>
+<style>
+
+  section {
+    max-width: 700px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem 2rem;
+    margin: auto;
+  }
+  h2 {
+    color: #2c3e50;
+    border-left: 6px solid #4B8BBE;
+    padding-left: 0.75rem;
+  }
+  p {
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  p strong {
+    color: #34495e;
+  }
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  pre code .keyword {
+    color: #66d9ef;
+    font-weight: bold;
+  }
+  pre code .function {
+    color: #a6e22e;
+  }
+  pre code .string {
+    color: #e6db74;
+  }
+</style>
+</head>
+<body>
+<section>
+  <h2>Tratamento de exceção</h2><br>
+  <p><strong>Conceito</strong><br> O tratamento de exceções é um mecanismo fundamental em programação que permite lidar com erros ou situações inesperadas (exceções) que podem ocorrer durante a execução de um programa. Em vez de o programa falhar abruptamente, o tratamento de exceções permite que ele detecte e responda a essas situações de forma controlada, potencialmente recuperando-se do erro ou finalizando a execução de maneira mais graciosa.</p>
+  Uma exceção é um evento que ocorre durante a execução de um programa que interrompe o fluxo normal das instruções. Exemplos comuns incluem tentar dividir por zero, acessar um índice inválido em uma lista, tentar abrir um arquivo que não existe ou encontrar um erro de tipo de dados.<br><br>
+  O tratamento de exceções envolve a identificação de blocos de código que podem potencialmente gerar exceções e a definição de como o programa deve se comportar caso uma exceção ocorra dentro desses blocos.<br><br><br>
+  <p><strong>Aplicação</strong><br> O tratamento de exceções é crucial para construir programas robustos e confiáveis, sendo aplicado em diversas situações:</p>
+  <li><strong>Validação de entrada de dados:</strong> Lidar com entradas inválidas fornecidas pelo usuário (por exemplo, tentar converter uma string não numérica para um inteiro).</li><br>
+  <li><strong>Operações de arquivo:</strong> Tratar erros que podem ocorrer ao ler ou escrever em arquivos (por exemplo, arquivo não encontrado, permissão negada).</li><br>
+  <li><strong>Conexões de rede:</strong> Lidar com falhas de conexão ou timeouts ao interagir com recursos de rede.</li><br>
+  <li><strong>Acesso a recursos externos:</strong> Tratar erros ao acessar bancos de dados, APIs ou outros serviços externos que podem estar indisponíveis ou retornar erros.</li><br>
+  <li><strong>Erros lógicos:</strong> Detectar e lidar com condições inesperadas que podem surgir devido a erros na lógica do programa.</li><br>
+  <li><strong>Melhoria da experiência do usuário:</strong> Evitar que o programa trave e fornecer mensagens de erro informativas em vez de telas de erro genéricas.</li><br>
+  <li><strong>Garantia da continuidade da execução:</strong> Em sistemas críticos, o tratamento de exceções pode permitir que o programa continue funcionando mesmo diante de falhas temporárias.</li><br><br>
+  <p><strong>Exemplo:</strong></p>
+  <pre><code><span class="keyword">try</span>:
+    x = 10 / 0
+<span class="keyword">except</span> <span class="function">ZeroDivisionError</span>:
+    <span class="function">print</span>(<span class="string">"Não é possível dividir por zero"</span>)
+</code></pre>
+</section>
+
+{% endblock %}

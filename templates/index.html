@@ -1,0 +1,93 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+    <title>Seja um Mestre em Python!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .hero {
+            background-color: #306998;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1><b>Descubra o poder do Python: Sua jornada começa aqui!</b></h1><br>
+        <i>Se você está começando agora ou já tem experiência com programação, este guia foi feito para ajudar você a entender e explorar tudo o que o Python tem a oferecer.</i>
+        <i>Aqui você irá aprender desde os conceitos básicos até aplicações mais avançadas, passando por exemplos práticos e dicas úteis. Python é simples, poderoso e está por trás de muitas das tecnologias que usamos no dia a dia — e este é o lugar certo para você dominar essa linguagem.</i><br><br><br>
+        <a href="/duvidas" style="background-color: white; color: #333; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Tire suas dúvidas com a API do Gemini</a>
+    </div>
+
+    <div class="container">
+        <h2 id="o-que-e-python"><b>O que é Python?</b></h2><br>
+        <p>Python é uma linguagem de programação de alto nível, interpretada, de propósito geral e com uma filosofia de design que enfatiza a legibilidade do código. Criada por Guido van Rossum e lançada pela primeira vez em 1991, Python rapidamente ganhou popularidade devido à sua sintaxe clara e concisa, o que a torna fácil de aprender e usar.</p>
+        <p>Uma das principais características de Python é a sua versatilidade. Ela pode ser utilizada em uma ampla gama de aplicações, desde desenvolvimento web e científico até inteligência artificial e automação. Sua vasta biblioteca padrão e a grande quantidade de bibliotecas de terceiros disponíveis expandem ainda mais suas capacidades.</p><br>
+
+        <h2><b>Por que aprender Python?</b></h2><br>
+        <ul>
+            <li><strong>Fácil de Aprender:</strong> Sua sintaxe simples e intuitiva a torna ideal para iniciantes.</li>
+            <li><strong>Versátil:</strong> Aplicável em diversas áreas como desenvolvimento web (Django, Flask), ciência de dados (Pandas, NumPy, Scikit-learn), inteligência artificial (TensorFlow, PyTorch), automação, scripting e muito mais.</li>
+            <li><strong>Grande Comunidade:</strong> Uma comunidade ativa e prestativa, facilitando a busca por ajuda e recursos de aprendizado.</li>
+            <li><strong>Vasta Biblioteca Padrão:</strong> Oferece um rico conjunto de módulos e funções integradas para realizar diversas tarefas sem a necessidade de bibliotecas externas para funcionalidades básicas.</li>
+            <li><strong>Muitas Bibliotecas de Terceiros:</strong> Um ecossistema robusto com inúmeras bibliotecas poderosas que estendem suas funcionalidades para áreas específicas.</li>
+            <li><strong>Alta Demanda no Mercado de Trabalho:</strong> Profissionais com conhecimento em Python são altamente valorizados em diversas indústrias.</li>
+            <li><strong>Multiplataforma:</strong> Python roda em diversos sistemas operacionais como Windows, macOS e Linux.</li>
+            <br>
+        </ul>
+
+        <h2><b>As principais aplicações de Python no mundo real</b></h2><br>
+
+            <li><strong>Desenvolvimento Web:</strong> Frameworks como Django e Flask facilitam a criação de aplicações web robustas e escaláveis.</li>
+            <li><strong>Ciência de Dados e Análise:</strong> Bibliotecas como Pandas, NumPy e Matplotlib são ferramentas essenciais para manipulação, análise e visualização de dados.</li>
+            <li><strong>Inteligência Artificial e Machine Learning:</strong> Frameworks como TensorFlow, PyTorch e Scikit-learn impulsionam o desenvolvimento de modelos de aprendizado de máquina e inteligência artificial.</li>
+            <li><strong>Automação e Scripting:</strong> Python é excelente para automatizar tarefas repetitivas, gerenciar sistemas e criar scripts úteis.</li>
+            <li><strong>Desenvolvimento de Jogos:</strong> Bibliotecas como Pygame permitem a criação de jogos 2D.</li>
+            <li><strong>Aplicações Desktop:</strong> Frameworks como Tkinter e PyQt possibilitam a criação de interfaces gráficas de usuário (GUIs).</li>
+            <li><strong>Testes de Software:</strong> Python é amplamente utilizado para escrever testes automatizados.</li>
+            <li><strong>Computação Científica e Matemática:</strong> Bibliotecas como SciPy fornecem ferramentas para cálculos científicos e matemáticos complexos.</li>
+        </ul><br><br>
+
+    </div>
+
+{% endblock %}

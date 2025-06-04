@@ -1,0 +1,113 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<title>Vetores e Matrizes</title>
+<style>
+    section {
+        max-width: 700px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 2rem;
+        margin: auto;
+    }
+
+    h2 {
+        color: #2c3e50;
+        border-left: 6px solid #4B8BBE;
+        padding-left: 0.75rem;
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .mark,
+    mark {
+        padding: .1875em;
+        color: black;
+        background-color: #FFD43B;
+    }
+
+    p strong {
+        color: #34495e;
+    }
+
+    pre {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 1rem 1.25rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    }
+
+    pre code .keyword {
+        color: #66d9ef;
+        font-weight: bold;
+    }
+
+    pre code .function {
+        color: #a6e22e;
+    }
+
+    pre code .string {
+        color: #e6db74;
+    }
+</style>
+</head>
+
+<body>
+    <section>
+        <h2>Vetores e matrizes</h2><br>
+        <p><strong>Conceito</strong><br> Vetores (listas) e matrizes (listas de listas) são estruturas de dados
+            fundamentais na programação e na matemática, utilizadas para organizar e armazenar coleções de elementos do
+            mesmo tipo.</p>
+        <li><strong>Vetor (ou Array Unidimensional):</strong> É uma estrutura linear que armazena uma sequência de elementos em posições
+            contíguas na memória. Cada elemento é acessado por um único índice que representa sua posição dentro da
+            sequência. Imagine um vetor como uma única linha de caixas, onde cada caixa contém um valor e tem um número
+            que indica sua posição.</li><br>
+        <li><strong>Matriz (ou Array Bidimensional):</strong> É uma estrutura bidimensional que armazena elementos em linhas e colunas.
+            Cada elemento é acessado por dois índices: um para a linha e outro para a coluna em que ele se encontra.
+            Pense em uma matriz como uma tabela, onde cada célula contém um valor e é identificada por seu número de
+            linha e número de coluna.</li><br>
+        Generalizando, podemos ter arrays multidimensionais, que estendem o conceito para mais de duas dimensões (por
+        exemplo, um cubo de dados seria um array tridimensional).<br><br><br>
+        <p><strong>Aplicação</strong><br> Vetores e matrizes são amplamente utilizados em diversas áreas da computação e
+            da ciência, incluindo:</p>
+        <mark>Vetores:</mark><br><br>
+        <li><strong>Armazenamento de listas de itens:</strong> Nomes, notas, preços, etc.</li><br>
+        <li><strong>Representação de dados sequenciais:</strong> Séries temporais, sequências de DNA.</li><br>
+        <li><strong>Implementação de outras estruturas de dados:</strong> Pilhas, filas, listas encadeadas podem ser implementadas usando
+            vetores como base.</li><br>
+        <li><strong>Operações matemáticas e científicas:</strong> Representação de vetores em álgebra linear, armazenamento de
+            coeficientes de polinômios.</li><br>
+        <li><strong>Processamento de sinais e imagens:</strong> Armazenamento de amostras de áudio ou pixels de uma linha de uma imagem.
+        </li><br><br>
+
+        <mark>Matrizes:</mark><br><br>
+
+        <li><strong>Representação de tabelas de dados:</strong> Planilhas, bancos de dados.</li><br>
+        <li><strong>Operações matemáticas e científicas:</strong> Álgebra linear (multiplicação de matrizes, resolução de sistemas de
+            equações), transformações geométricas (rotação, escala, translação).</li><br>
+        <li><strong>Processamento de imagens:</strong> Representação de imagens como grades de pixels (onde cada elemento da matriz
+            representa a cor de um pixel).</li><br>
+        <li><strong>Computação gráfica:</strong> Modelagem 3D, projeções.</li><br>
+        <li><strong>Análise de dados:</strong> Representação de conjuntos de dados multivariados.</li><br>
+        <li><strong>Inteligência Artificial e Machine Learning:</strong> Representação de pesos em redes neurais, matrizes de
+            características</li><br>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>lista = [10, 20, 30]
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+<span class="function">print</span>(lista[1])       <span class="string"># 20</span>
+<span class="function">print</span>(matriz[0][2])  <span class="string"># 3</span></code></pre>
+    </section>
+
+    {% endblock %}

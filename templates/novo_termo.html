@@ -1,0 +1,124 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<br><h2 style="text-align: center;"><strong>Adicionar termo ao Glóssario</strong></h2><br>
+
+<form id="adicionarTermoForm" action="{{ url_for('criar_termo')}}" method="post" style="max-width: 500px; margin: auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 8px; background: white;">
+    <div class="mb-3">
+        <label for="termo" class="form-label">Termo</label>
+        <input class="form-control" id="termo" name="termo" aria-describedby="emailHelp" required style="border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <div id="termoHelp" class="form-text">Termo para ser adicionado.</div>
+    </div>
+    <div class="mb-3">
+        <label for="definicao" class="form-label">Definição</label>
+        <textarea class="form-control" id="definicao" name="definicao" rows="3" required style="border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"></textarea>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary btn-enviar" onclick="mostrarModalAdicionar()">Enviar</button>
+    </div>
+</form>
+
+<div id="modalAdicionar" style="
+    display:none;
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+">
+    <div style="
+        background:white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 320px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        text-align: center;
+    ">
+        <h5>Confirme a senha para adicionar o termo</h5>
+        <input id="inputSenhaAdicionar" type="text" style="font-size:1.2rem; padding: 8px; width: 100%; box-sizing: border-box; letter-spacing: 2px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" maxlength="20" autocomplete="off" />
+        <div id="senhaFeedbackAdicionar" style="color:red; margin-top:8px; display:none;">Senha incorreta. Tente novamente.</div>
+        <div style="margin-top: 15px;">
+            <button type="button" class="btn btn-primary" onclick="confirmarAdicionar()">Confirmar</button>
+            <button type="button" class="btn btn-secondary ms-2" onclick="fecharModalAdicionar()">Cancelar</button>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+
+<style>
+    .btn-enviar {
+        border: none !important;
+        transition: background-color 0.3s ease;
+    }
+    .btn-enviar:hover {
+        background-color: #FFD43B !important; /* Cor ao passar o mouse */
+        color: #000 !important; /* Cor do texto ao passar o mouse */
+        border: none !important;
+    }
+</style>
+
+<script>
+    const correctPassword = "1234"; // Substitua pela senha real
+
+    const modalAdicionar = document.getElementById('modalAdicionar');
+    const inputSenhaAdicionar = document.getElementById('inputSenhaAdicionar');
+    const senhaFeedbackAdicionar = document.getElementById('senhaFeedbackAdicionar');
+
+    let senhaReal = "";
+
+    function mostrarModalAdicionar() {
+        senhaReal = "";
+        inputSenhaAdicionar.value = "";
+        senhaFeedbackAdicionar.style.display = "none";
+        modalAdicionar.style.display = "flex";
+        inputSenhaAdicionar.focus();
+    }
+
+    function fecharModalAdicionar() {
+        modalAdicionar.style.display = "none";
+    }
+
+    inputSenhaAdicionar.addEventListener('input', function(e) {
+        let valorAtual = inputSenhaAdicionar.value;
+        if (valorAtual.length > senhaReal.length) {
+            let novoChar = valorAtual.substring(senhaReal.length);
+            senhaReal += novoChar;
+
+            let mascarado = "*".repeat(senhaReal.length - 1) + novoChar;
+            inputSenhaAdicionar.value = mascarado;
+
+            setTimeout(() => {
+                inputSenhaAdicionar.value = "*".repeat(senhaReal.length);
+            }, 800);
+        } else {
+            senhaReal = senhaReal.substring(0, valorAtual.length);
+            inputSenhaAdicionar.value = "*".repeat(valorAtual.length);
+        }
+    });
+
+    inputSenhaAdicionar.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            confirmarAdicionar();
+        }
+    });
+
+    function confirmarAdicionar() {
+        if (senhaReal === correctPassword) {
+            fecharModalAdicionar();
+            document.getElementById('adicionarTermoForm').submit();
+        } else {
+            senhaFeedbackAdicionar.style.display = "block";
+            senhaReal = "";
+            inputSenhaAdicionar.value = "";
+            inputSenhaAdicionar.focus();
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modalAdicionar) {
+            fecharModalAdicionar();
+        }
+    };
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,105 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<title>Funções e Procedimentos</title>
+<style>
+    section {
+        max-width: 700px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 2rem;
+        margin: auto;
+    }
+
+    h2 {
+        color: #2c3e50;
+        border-left: 6px solid #4B8BBE;
+        padding-left: 0.75rem;
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .mark,
+    mark {
+        padding: .1875em;
+        color: black;
+        background-color: #FFD43B;
+    }
+
+    p strong {
+        color: #34495e;
+    }
+
+    pre {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 1rem 1.25rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    }
+
+    pre code .keyword {
+        color: #66d9ef;
+        font-weight: bold;
+    }
+
+    pre code .function {
+        color: #a6e22e;
+    }
+
+    pre code .string {
+        color: #e6db74;
+    }
+</style>
+</head>
+
+<body>
+    <section>
+        <h2>Funções e procedimentos</h2><br>
+        <p><strong>Conceito</strong><br> Funções e procedimentos (também chamados de sub-rotinas ou métodos, dependendo
+            da linguagem) são blocos de código reutilizáveis que realizam uma tarefa específica. Eles ajudam a organizar
+            o código, torná-lo mais modular, legível e fácil de manter, além de evitar a repetição de código.<br></p>
+        A principal distinção entre funções e procedimentos reside no retorno de um valor:<br>
+
+        <li><strong>Função:</strong> Um bloco de código que executa uma série de instruções e, opcionalmente, retorna um valor ao ponto
+            do programa onde foi chamada. Esse valor pode ser o resultado de um cálculo, uma verificação ou qualquer
+            outro dado processado dentro da função.</li><br>
+        <li><strong>Procedimento:</strong> Um bloco de código que executa uma série de instruções, mas não retorna um valor
+            explicitamente ao ponto do programa onde foi chamado. Seu objetivo principal é realizar uma ação ou
+            modificar o estado do programa. Em algumas linguagens, procedimentos podem ser considerados funções que
+            retornam um valor nulo ou vazio.</li><br>
+        Em muitas linguagens modernas, a distinção entre funções e procedimentos pode ser sutil ou até mesmo
+        inexistente, com um único mecanismo (<mark>def</mark> em Python, por exemplo) sendo usado para definir ambos, e
+        o retorno de um valor sendo opcional.<br><br>
+        <p><strong>Aplicação</strong><br> Funções e procedimentos são amplamente utilizados em todos os aspectos da
+            programação, incluindo:<br></p>
+
+        <li><strong>Modularização do código:</strong> Dividir um programa complexo em partes menores e mais gerenciáveis, cada uma
+            responsável por uma tarefa específica.</li><br>
+        <li><strong>Reutilização de código:</strong> Definir um bloco de código uma vez e chamá-lo de diferentes partes do programa,
+            economizando tempo e esforço.</li><br>
+        <li><strong>Melhora da legibilidade:</strong> Tornar o código mais fácil de entender, pois cada função/procedimento tem um
+            propósito bem definido.</li><br>
+        <li><strong>Facilitação da manutenção:</strong> Alterações ou correções em uma funcionalidade específica podem ser isoladas
+            dentro da função/procedimento correspondente, sem afetar outras partes do programa.</li><br>
+        <li><strong>Abstração:</strong> Ocultar os detalhes de implementação de uma tarefa, permitindo que o programador se concentre no
+            que a função/procedimento faz, em vez de como faz.</li><br>
+        <li><strong>Organização lógica:</strong> Estruturar o código de forma clara e hierárquica, refletindo a lógica do problema que
+            está sendo resolvido.</li><br><br>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code><span class="keyword">def</span> soma(a, b):
+    <span class="keyword">return</span> a + b
+
+resultado = soma(3, 5)
+<span class="function">print</span>(resultado)  <span class="string"># 8</span></code></pre>
+    </section>
+
+    {% endblock %}

@@ -1,0 +1,97 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+    <title>Seção de tirar Dúvidas</title>
+    <style>
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(200, 200, 200, 0.7), 0 0 10px rgba(200, 200, 200, 0.5);
+        }
+
+        form {
+            margin-bottom: 1.5rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 90px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #306998;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, color 0.3s; /* Adicionando transição */
+        }
+        button:hover {
+            background: #FFD43B;
+            color: black; /* Mudando a cor do texto para preto ao passar o mouse */
+        }
+        .answer {
+            margin-bottom: 1.5rem;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .error {
+            color: #e74c3c;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <h1>O Gemini responde!</h1><br>
+        {% if resposta %}
+            <div class="answer">{{ resposta }}</div>
+        {% endif %}
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="post" onsubmit="return submitForm()">
+            <label for="pergunta">Digite sua dúvida:</label><br /><br><br>
+            <textarea id="pergunta" name="pergunta" placeholder="Escreva sua pergunta aqui..." required>{{ pergunta or '' }}</textarea><br />
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <br><br><br><br><br><br><br><br>
+
+    <script>
+        function submitForm() {
+            const textarea = document.getElementById('pergunta');
+            if (textarea.value.trim() === '') {
+                return false;
+            }
+            return true;
+        }
+
+        document.getElementById('pergunta').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.querySelector('form').submit();
+            }
+        });
+    </script>
+{% endblock %}

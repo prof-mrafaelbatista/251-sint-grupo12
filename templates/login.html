@@ -1,0 +1,332 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<title>Login / Cadastro</title>
+<style>
+  section {
+    max-width: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem 2rem;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  h2 {
+    color: #2c3e50;
+    border-left: 6px solid #4B8BBE;
+    padding-left: 0.75rem;
+    text-align: center;
+  }
+  p {
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  input[type="text"], input[type="password"], input[type="email"], input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4B8BBE;
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button:hover {
+    background-color: #FFD43B;
+    color: black;
+  }
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .toggle-buttons button {
+    width: auto;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+  }
+  .hidden {
+    display: none;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .overlay-content {
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 320px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .error-message {
+    color: red;
+    display: none;
+    margin: 0.5rem 0;
+    font-weight: bold;
+  }
+  .error-animation {
+    display: none;
+    animation: fadeIn 0.5s forwards;
+    margin-top: 1rem;
+    color: red;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Modern Custom Checkbox Styles */
+  #robotCheck {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 2px solid #4B8BBE;
+    border-radius: 6px;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+  }
+
+  /* Hover effect */
+  .custom-checkbox:hover {
+    border-color: #30699e;
+    box-shadow: 0 0 8px #4B8BBE88;
+  }
+
+  /* Checked state */
+  #robotCheck:checked + .custom-checkbox {
+    background: #4B8BBE;
+    border-color: #4B8BBE;
+    box-shadow: 0 0 8px #4B8BBEaa;
+  }
+
+  /* Checkmark */
+  .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  #robotCheck:checked + .custom-checkbox::after {
+    display: block;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Label text */
+  .checkbox-label {
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>
+</head>
+<body>
+    <br><br><br><br><br><br>
+<section>
+  <h2>Acesse sua conta</h2>
+  <br><br>
+  <div class="toggle-buttons">
+    <button id="btnLogin" type="button">Login</button>
+    <button id="btnRegister" type="button">Cadastro</button>
+  </div>
+
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Usuário" required autocomplete="username">
+    <input type="password" id="password" placeholder="Senha" required autocomplete="current-password">
+    <div class="error-message" id="errorMessage">Ops, algo deu errado!</div>
+    <div class="error-animation" id="errorAnimation">
+      <img src="path/to/error-image.png" alt="Erro" style="width: 20px; vertical-align: middle;">
+      <span>Ops, algo deu errado!</span>
+    </div>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <form id="registerForm" class="hidden">
+    <input type="text" id="firstName" placeholder="Nome" required autocomplete="given-name">
+    <input type="text" id="lastName" placeholder="Sobrenome" required autocomplete="family-name">
+    <input type="text" id="newUsername" placeholder="Novo Usuário" required autocomplete="username">
+    <input type="email" id="email" placeholder="Email" required autocomplete="email">
+    <input type="password" id="newPassword" placeholder="Senha" required autocomplete="new-password">
+    <input type="date" id="birthdate" placeholder="Data de Nascimento" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+</section>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-content" id="overlayContent">
+    <h3>Confirme que você não é um robô</h3>
+    <input type="checkbox" id="robotCheck" required>
+    <label for="robotCheck" class="custom-checkbox"></label>
+    <label for="robotCheck" class="checkbox-label">Não sou um robô</label>
+    <br><br>
+    <button id="confirmLogin">Confirmar</button>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnRegister = document.getElementById('btnRegister');
+  const overlay = document.getElementById('overlay');
+  const overlayContent = document.getElementById('overlayContent');
+  const confirmLogin = document.getElementById('confirmLogin');
+  const robotCheck = document.getElementById('robotCheck');
+  const errorMessage = document.getElementById('errorMessage');
+  const errorAnimation = document.getElementById('errorAnimation');
+
+  btnLogin.addEventListener('click', () => {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+    errorMessage.style.display = 'none'; // Oculta a mensagem de erro no toggle
+    errorAnimation.style.display = 'none'; // Oculta a animação de erro no toggle
+  });
+
+  btnRegister.addEventListener('click', () => {
+    registerForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+    errorMessage.style.display = 'none'; // Oculta a mensagem de erro no toggle
+    errorAnimation.style.display = 'none'; // Oculta a animação de erro no toggle
+  });
+
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    errorMessage.style.display = 'none'; // resetar a mensagem de erro antes de mostrar overlay
+    errorAnimation.style.display = 'none'; // resetar a animação de erro
+    overlay.style.display = 'flex';
+    robotCheck.checked = false; // reset checkbox ao abrir overlay
+  });
+
+  confirmLogin.addEventListener('click', () => {
+    if (robotCheck.checked) {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          'username': username,
+          'password': password
+        })
+      }).then(response => {
+        if (response.redirected) {
+          window.location.href = response.url;
+        } else {
+          errorMessage.style.display = 'block'; // Mostrar mensagem de erro
+          errorAnimation.style.display = 'block'; // Mostrar animação de erro
+        }
+      }).catch(error => {
+        console.error('Erro:', error);
+        alert('Ocorreu um erro ao tentar fazer login.');
+      }).finally(() => {
+        overlay.style.display = 'none';
+      });
+    } else {
+      alert('Por favor, confirme que você não é um robô.');
+    }
+  });
+
+  // Ocultar overlay e desmarcar checkbox se clicar fora do overlayContent e do loginForm
+  document.addEventListener('click', (event) => {
+    const isInsideOverlayContent = overlayContent.contains(event.target);
+    const isInsideLoginForm = loginForm.contains(event.target);
+    if (overlay.style.display === 'flex' && !isInsideOverlayContent && !isInsideLoginForm) {
+      overlay.style.display = 'none';
+      robotCheck.checked = false;
+    }
+  });
+
+  registerForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const newUsername = document.getElementById('newUsername').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const newPassword = document.getElementById('newPassword').value.trim();
+    const birthdate = document.getElementById('birthdate').value;
+
+    fetch('/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        'firstName': firstName,
+        'lastName': lastName,
+        'newUsername': newUsername,
+        'email': email,
+        'newPassword': newPassword,
+        'birthdate': birthdate
+      }),
+    }).then(response => {
+      if (response.ok) {
+        alert('Cadastro realizado com sucesso!');
+        window.location.reload();
+      } else {
+        alert('Erro ao cadastrar. Tente novamente.');
+      }
+    }).catch(error => {
+      console.error('Erro:', error);
+      alert('Ocorreu um erro ao tentar cadastrar.');
+    });
+  });
+
+  // Ocultar animação de erro ao clicar fora do campo de entrada
+  document.addEventListener('click', (event) => {
+    const isInsideInput = loginForm.contains(event.target);
+    if (!isInsideInput) {
+      errorAnimation.style.display = 'none'; // Ocultar animação de erro
+    }
+  });
+</script>
+{% endblock %}
+

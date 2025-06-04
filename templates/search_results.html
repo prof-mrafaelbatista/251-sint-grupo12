@@ -1,0 +1,61 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<title>Resultados da Pesquisa</title>
+<style>
+    section {
+        max-width: 400px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 2rem;
+        margin: auto;
+    }
+
+    h2 {
+        color: #2c3e50;
+        border-left: 6px solid #4B8BBE;
+        padding-left: 0.75rem;
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    p strong {
+        color: #34495e;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+</style>
+</head>
+
+<body>
+    <br><br><br><br>
+    <section>
+        <h2>Resultados da Pesquisa</h2>
+        <p><strong>Você pesquisou por:</strong> <span>{{ query }}</span></p>
+        <div id="searchResults">
+            {% if results %}
+            <ul>
+                {% for result in results %}
+                <li>
+                    <strong>{{ result.title }}</strong>:
+                    {% if result.type == 'glossario' %}
+                    <span>{{ result.content }}</span>
+                    {% else %}
+                    <a href="{{ url_for(result.type) }}" class="underline">{{ result.content }}</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Nenhum resultado encontrado para a consulta "{{ query }}".</p>
+            {% endif %}
+        </div>
+    </section>
+
+    {% endblock %}

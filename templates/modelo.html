@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mestres em Python</title>
+  <link rel="icon" href="../static/PythonLogo.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #eeeeee;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      height: 100%;
+    }
+
+    .navbar {
+      background-color: #2b2b2d !important;
+    }
+
+    .navbar-nav .nav-link {
+      font-family: 'Franklin Gothic', serif;
+    }
+
+    .navbar-title {
+      font-family: 'Segoe UI', serif;
+    }
+
+    .navbar>.container,
+    .navbar>.container-fluid,
+    .navbar>.container-lg,
+    .navbar>.container-md,
+    .navbar>.container-sm,
+    .navbar>.container-xl,
+    .navbar>.container-xxl {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      background-color: #2b2b2d;
+      color: white;
+      text-align: center;
+      padding: 0.1rem;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: wheat;
+    }
+
+    #about h2 {
+      color: #1a237e;
+      margin-bottom: 1rem;
+    }
+
+    #about p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .login-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #306998;
+      color: white;
+    }
+
+    .search-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: #306998;
+      color: white;
+    }
+
+    .search-input {
+      position: absolute;
+      top: 50px;
+      left: 15px;
+      display: none;
+      width: 200px !important;
+    }
+
+    .search-light {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 15px;
+      width: 20px;
+      height: 20px;
+      background-color: #1a237e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #1a237e;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand navbar-title" href="/">Caderno de Python</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="/sobre-equipe">Sobre Nós</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/duvidas">Dúvidas</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Conteúdo Python
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/selecao">Estrutura de Seleção</a></li>
+              <li><a class="dropdown-item" href="/repeticao">Estrutura de Repetição</a></li>
+              <li><a class="dropdown-item" href="/vetores-matrizes">Vetores e Matrizes</a></li>
+              <li><a class="dropdown-item" href="/funcoes-procedimentos">Funções e Procedimentos</a></li>
+              <li><a class="dropdown-item" href="/tratamento">Tratamento de Exeção</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/glossario" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Dicionário de Termos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/glossario">Visualizar Glossario</a></li>
+              <li><a class="dropdown-item" href="/novo-termo">Adicione um Novo termo</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <a class="btn search-button" href="#" onclick="toggleSearchInput(event)">Pesquisar</a>
+  <input type="text" class="form-control search-input" id="searchInput" placeholder="Digite sua pesquisa..."
+    onkeypress="handleSearch(event)">
+
+  <a class="btn login-button" href="/login">Login</a>
+
+  {% block conteudo %} {% endblock %}
+
+  <main id="mainContent" tabindex="-1" role="main">
+    <section id="about">
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© Mestres em Python. Todos os direitos reservados.</p>
+    <p>
+      <a href="/sobre-equipe" target="_blank" rel="noopener" aria-label="Github" tabindex="0">Siga-nos nas Redes
+        Sóciais</a>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+  <script>
+    function toggleSearchInput(event) {
+      event.preventDefault();
+      const searchInput = document.getElementById('searchInput');
+      searchInput.style.display = searchInput.style.display === 'block' ? 'none' : 'block';
+      searchInput.focus();
+    }
+
+    function handleSearch(event) {
+      if (event.key === 'Enter') {
+        const query = document.getElementById('searchInput').value;
+        window.location.href = '/search?query=' + encodeURIComponent(query);
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.querySelector('.search-button');
+
+      if (!searchButton.contains(event.target) && !searchInput.contains(event.target)) {
+        searchInput.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
