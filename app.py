@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'super secret key')  # Use env variable or default
 
 # Initialize Gemini client using environment variable for API key
-GENAI_API_KEY = os.getenv("GENAI_API_KEY", "AIzaSyCn-KAd38rwVW2XcfHu2lpRbFJlMSagoog")
+GENAI_API_KEY = os.getenv("GENAI_API_KEY", "Troque pela sua API Key")
 client = genai.Client(api_key=GENAI_API_KEY)
 
 
